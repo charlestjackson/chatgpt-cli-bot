@@ -1,3 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -eu
 
-node --no-warnings node-chatgpt-api.js 
+node --no-warnings node-chatgpt-api.js $@

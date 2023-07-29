@@ -5,9 +5,23 @@ const fs = require('fs');
 const funcs = require('./functions');
 const { logger } = require('./logger');
 
+const commander = require('commander');
+
+commander
+    .version('1.0.0', '-v, --version')
+    .usage('[OPTIONS]...')
+    .option('-m, --model <value>', 'GPT model for API requests. This script requires the model to be able to use functions, refer to the API for a list of valid models. Default is gpt-3.5-turbo-0613', "gpt-3.5-turbo-0613")
+    .option('-t, --temp <value>' , 'Model temperature, refer to API docs for details on what this controls, default is 0.7', 0.7)
+    .option('-l <value>', "Log level, default is 'info'. Valid values are 'info', 'debug', 'error', default is 'info'", "info")
+    .parse(process.argv);
+
+const options = commander.opts();
+
 // GPT parameters
-const gptModel = "gpt-3.5-turbo-0613"
-const gptTemp = 0.7
+const gptModel = options.model;
+const gptTemp = options.temp;
+
+logger.level = options.log;
 
 const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
