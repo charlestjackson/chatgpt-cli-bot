@@ -12,7 +12,7 @@ commander
     .usage('[OPTIONS]...')
     .option('-m, --model <value>', 'GPT model for API requests. This script requires the model to be able to use functions, refer to the API for a list of valid models. Default is gpt-3.5-turbo-0613', "gpt-3.5-turbo-0613")
     .option('-t, --temp <value>' , 'Model temperature, refer to API docs for details on what this controls, default is 0.7', 0.7)
-    .option('-l <value>', "Log level, default is 'info'. Valid values are 'info', 'debug', 'error', default is 'info'", "info")
+    .option('-l <value>', "Log level, default is 'warning'. Levels are defined by the Winston library", "warning")
     .parse(process.argv);
 
 const options = commander.opts();
@@ -21,7 +21,7 @@ const options = commander.opts();
 const gptModel = options.model;
 const gptTemp = options.temp;
 
-logger.level = options.log;
+logger.level = options.l;
 
 const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
