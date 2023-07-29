@@ -1,0 +1,18 @@
+{
+  "name": "chatgpt-cli-bot",
+  "version": "1.0.0",
+  "description": "A simple cli test harness / bot interface for testing out ChatGPT's API",
+  "main": "node-chatgpt-api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "openai": "^3.3.0",
+    "readline-sync": "^1.4.10",
+    "winston": "^3.10.0"
+  }
+}
